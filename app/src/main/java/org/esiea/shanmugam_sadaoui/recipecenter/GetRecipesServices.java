@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,7 +24,6 @@ import java.net.URL;
  * helper methods.
  */
 public class GetRecipesServices extends IntentService {
-    // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_RECIPES = "org.esiea.shanmugam_sadaoui.recipecenter.action.getRecipesServices";
 
@@ -69,10 +69,16 @@ public class GetRecipesServices extends IntentService {
 
 
     private void handleActionRecipe() {
-        Log.d("","Thread service name:" + Thread.currentThread().getName());
+        Log.d("RECIPE","Thread service name:" + Thread.currentThread().getName());
+        Context context = getApplicationContext();
+        CharSequence text = "Téléchargement commencé";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
         URL url = null;
         try {
-            url = new URL("http://www.elias-berriache.me/recipes/recipes.json");
+            url = new URL("http://gdata.youtube.com/feeds/api/standardfeeds/FR/top_rated?v=2&alt=jsonc");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
@@ -81,9 +87,7 @@ public class GetRecipesServices extends IntentService {
                         new File(getCacheDir(), "recipes.json"));
                 LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.RECIPES_UPDATE));
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             }
         }

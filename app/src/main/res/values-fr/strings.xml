@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Recipe Center</string>
+    <string name="action_settings">Réglages</string>
+    <string name="button_text">Click</string>
+    <string name="read">Lire</string>
+    <string name="back">Retour</string>
+    <string name="titre1">Gâteau au chocolat</string>
+    <string name="content1">
+        1) Cassez les oeufs en séparant les blancs des jaunes. Battez fermement les blancs en neige avec une pincée de sel.
+        2) Mélangez le beurre mou et le sucre. Ajoutez-y le chocolat fondu tout en continuant de mélanger puis incorporez un à un les jaunes d\'oeufs sans cesser de remuer.
+        3) Ajouter la farine puis les blancs d\'oeufs et mélangez délicatement. 4) Beurrez un moule et versez-y la préparation. Faire cuire le gâteau environ 20 minutes sur thermostat 5.
+    </string>
+</resources>
