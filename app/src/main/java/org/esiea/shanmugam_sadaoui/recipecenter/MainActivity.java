@@ -1,11 +1,17 @@
 package org.esiea.shanmugam_sadaoui.recipecenter;
 
+import android.annotation.TargetApi;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +37,7 @@ import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         GetRecipesServices.startActionRecipe(this);
         IntentFilter intentFilter=new IntentFilter(RECIPES_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new RecipeUpdate(),intentFilter);
-
 
     }
 
@@ -67,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     public JSONArray getRecipesFromFile(){
         try{
